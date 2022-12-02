@@ -19,13 +19,10 @@ const SearchForm = ({
   setIsRandom,
   handleSubmit,
 }: Props) => {
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) =>
     setSearchId(e.target.value);
-  };
 
-  const handleClickRandom = () => {
-    setIsRandom(true);
-  };
+  const handleClickRandom = () => setIsRandom(true);
 
   return (
     <>
@@ -108,6 +105,7 @@ const Form = styled.form`
 
       :hover {
         color: #6c9a98;
+        text-decoration: underline;
       }
     }
   }

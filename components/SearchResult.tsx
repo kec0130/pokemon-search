@@ -11,9 +11,8 @@ interface Props {
 }
 
 const SearchResult = ({ pokemon, isLoading, isError }: Props) => {
-  const capitalize = (word: string) => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  };
+  const capitalize = (word: string) =>
+    word.charAt(0).toUpperCase() + word.slice(1);
 
   if (isLoading) return <Loading />;
   if (isError) return <Error />;

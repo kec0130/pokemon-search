@@ -35,6 +35,7 @@ const Home = () => {
       setSearchId(randomId);
       getPokemonData(randomId);
     } else {
+      if (!searchId.trim() || searchId === pokemon?.id.toString()) return;
       getPokemonData(searchId);
     }
   };
@@ -73,7 +74,6 @@ const Container = styled.div`
   align-items: center;
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
   border-radius: 1rem;
   text-align: center;
 `;
@@ -81,4 +81,6 @@ const Container = styled.div`
 const ResultContainer = styled(Container)`
   background-color: #f4fcfc;
   height: 480px;
+  margin-top: 2rem;
+  padding: 2rem;
 `;
