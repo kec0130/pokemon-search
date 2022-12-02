@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import { Pokemon } from '../types/pokemon';
 import Error from './Error';
+import Loading from './Loading';
 
 interface Props {
   pokemon: Pokemon | undefined;
@@ -14,8 +15,7 @@ const SearchResult = ({ pokemon, isLoading, isError }: Props) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
   };
 
-  if (isLoading) return <p>Loading...</p>;
-
+  if (isLoading) return <Loading />;
   if (isError) return <Error />;
 
   return (

@@ -72,7 +72,7 @@ const Form = styled.form`
   input {
     width: 100%;
     height: 100%;
-    max-width: 300px;
+    max-width: 240px;
     padding: 1rem;
     border: none;
     border-radius: 0.5rem;
