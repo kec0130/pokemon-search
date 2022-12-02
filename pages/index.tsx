@@ -10,10 +10,12 @@ const Home = () => {
   const [pokemon, setPokemon] = useState<Pokemon>();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isRandom, setIsRandom] = useState(false);
 
   const getPokemonData = async (id: string) => {
     setIsLoading(true);
     setIsError(false);
+    setIsRandom(false);
 
     try {
       const response = await axios.get<Pokemon>(
@@ -28,7 +30,13 @@ const Home = () => {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    getPokemonData(searchId);
+    if (isRandom) {
+      const randomId = Math.floor(Math.random() * 905 + 1).toString();
+      setSearchId(randomId);
+      getPokemonData(randomId);
+    } else {
+      getPokemonData(searchId);
+    }
   };
 
   return (
@@ -37,6 +45,7 @@ const Home = () => {
         <SearchForm
           searchId={searchId}
           setSearchId={setSearchId}
+          setIsRandom={setIsRandom}
           handleSubmit={handleSubmit}
         />
       </Container>

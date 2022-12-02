@@ -27,8 +27,8 @@ const SearchResult = ({ pokemon, isLoading, isError }: Props) => {
     <>
       {pokemon && (
         <Result>
-          <div className="id">{pokemon.id.toString().padStart(3, '0')}</div>
           <h3 className="name">{capitalize(pokemon.name)}</h3>
+          <div className="id">{pokemon.id}</div>
           <Image
             src={pokemon.sprites.other['official-artwork'].front_default}
             alt={pokemon.name}
@@ -53,16 +53,16 @@ const Result = styled.div`
 
   .id {
     font-size: 1.5rem;
-    margin-bottom: 0.8rem;
   }
 
   .name {
+    margin-bottom: 0.8rem;
     font-size: 2rem;
     font-weight: 700;
   }
 
   img {
-    margin: 1.5rem 0;
+    margin: 1.2rem 0;
   }
 
   .types {
