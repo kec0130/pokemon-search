@@ -5,7 +5,7 @@
 ## 로컬 실행 방법
 
 ```bash
-$ cd pokemon-search
+$ cd pokemon-search-main
 $ yarn
 $ yarn dev
 ```
