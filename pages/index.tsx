@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { ChangeEventHandler, FormEventHandler, useState } from 'react';
+import { FormEventHandler, useState } from 'react';
+import SearchForm from '../components/SearchForm';
 import SearchResult from '../components/SearchResult';
 import { Pokemon } from '../types/pokemon';
 
@@ -24,10 +25,6 @@ const Home = () => {
     setIsLoading(false);
   };
 
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setSearchId(e.target.value);
-  };
-
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     getPokemonData(searchId);
@@ -36,20 +33,13 @@ const Home = () => {
   return (
     <>
       <header>
-        <h1>Search your Pokémon!</h1>
+        <SearchForm
+          searchId={searchId}
+          setSearchId={setSearchId}
+          handleSubmit={handleSubmit}
+        />
       </header>
       <main>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="id">poke-id</label>
-          <input
-            id="id"
-            type="text"
-            placeholder="id"
-            value={searchId}
-            onChange={handleChange}
-          />
-          <button type="submit">Search</button>
-        </form>
         <div>
           <SearchResult
             pokemon={pokemon}
