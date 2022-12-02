@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import { Pokemon } from '../types/pokemon';
+import Error from './Error';
 
 interface Props {
   pokemon: Pokemon | undefined;
@@ -15,13 +16,7 @@ const SearchResult = ({ pokemon, isLoading, isError }: Props) => {
 
   if (isLoading) return <p>Loading...</p>;
 
-  if (isError)
-    return (
-      <>
-        <p>Pokemon not found!</p>
-        <p>Are you sure you got the right pokemon id?</p>
-      </>
-    );
+  if (isError) return <Error />;
 
   return (
     <>
