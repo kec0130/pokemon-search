@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import axios from 'axios';
 import { FormEventHandler, useState } from 'react';
 import SearchForm from '../components/SearchForm';
@@ -31,25 +32,44 @@ const Home = () => {
   };
 
   return (
-    <>
-      <header>
+    <Background>
+      <Container>
         <SearchForm
           searchId={searchId}
           setSearchId={setSearchId}
           handleSubmit={handleSubmit}
         />
-      </header>
-      <main>
-        <div>
-          <SearchResult
-            pokemon={pokemon}
-            isLoading={isLoading}
-            isError={isError}
-          />
-        </div>
-      </main>
-    </>
+      </Container>
+      <ResultContainer>
+        <SearchResult
+          pokemon={pokemon}
+          isLoading={isLoading}
+          isError={isError}
+        />
+      </ResultContainer>
+    </Background>
   );
 };
 
 export default Home;
+
+const Background = styled.div`
+  padding: 2rem 1rem;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+`;
+
+const ResultContainer = styled(Container)`
+  background-color: #f4fcfc;
+  height: 480px;
+`;

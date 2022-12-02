@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import Image from 'next/image';
 import { Pokemon } from '../types/pokemon';
 
@@ -8,6 +9,10 @@ interface Props {
 }
 
 const SearchResult = ({ pokemon, isLoading, isError }: Props) => {
+  const capitalize = (word: string) => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  };
+
   if (isLoading) return <p>Loading...</p>;
 
   if (isError)
@@ -21,19 +26,59 @@ const SearchResult = ({ pokemon, isLoading, isError }: Props) => {
   return (
     <>
       {pokemon && (
-        <div>
-          <div>#{pokemon.id}</div>
+        <Result>
+          <div className="id">{pokemon.id.toString().padStart(3, '0')}</div>
+          <h3 className="name">{capitalize(pokemon.name)}</h3>
           <Image
             src={pokemon.sprites.other['official-artwork'].front_default}
             alt={pokemon.name}
             width={200}
             height={200}
           />
-          <div>{pokemon.name}</div>
-        </div>
+          <div className="types">
+            {pokemon.types.map((type) => (
+              <li key={type.type.name}>{type.type.name}</li>
+            ))}
+          </div>
+        </Result>
       )}
     </>
   );
 };
 
 export default SearchResult;
+
+const Result = styled.div`
+  color: #2e3057;
+
+  .id {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .name {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  img {
+    margin: 1.5rem 0;
+  }
+
+  .types {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      background-color: #7daeab;
+      color: #ffffff;
+      border-radius: 1rem;
+      padding: 0.5rem 1rem;
+
+      + li {
+        margin-left: 0.8rem;
+      }
+    }
+  }
+`;
