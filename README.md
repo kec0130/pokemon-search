@@ -1,34 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FreeDSoft Frontend Assignment
 
-## Getting Started
+![pokemon-search](https://user-images.githubusercontent.com/77032760/205301954-3775555b-6ab0-4802-a4c0-876d6f5d9851.gif)
 
-First, run the development server:
+## 로컬 실행 방법
 
 ```bash
-npm run dev
-# or
-yarn dev
+$ cd pokemon-search
+$ yarn
+$ yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 기술 스택
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- TypeScript
+- Next.js
+- Emotion
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 주요 기능
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Search Form
 
-## Learn More
+- id로 포켓몬 검색
+- axios로 데이터 fetch
+- input validation: id를 입력하지 않았거나 현재 결과와 동일한 id 검색 시 fetch 막음
+- 랜덤 포켓몬 검색: 사용자의 진입 장벽을 낮추고 호기심을 유발하기 위해 id를 입력하지 않아도 랜덤 검색 결과를 볼 수 있는 기능 추가
 
-To learn more about Next.js, take a look at the following resources:
+### Search Result
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- 포켓몬 정보: 이름, id, 이미지, 타입
+- 로딩 애니메이션: 포켓볼이 흔들리는 애니메이션 사용
+- 에러 메시지: 존재하지 않거나 유효하지 않은 id로 검색 시 표시

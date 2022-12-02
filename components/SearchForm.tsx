@@ -32,7 +32,7 @@ const SearchForm = ({
           <input
             id="id"
             type="text"
-            placeholder="Enter name or id"
+            placeholder="Enter id number"
             autoComplete="off"
             value={searchId}
             onChange={handleChange}
